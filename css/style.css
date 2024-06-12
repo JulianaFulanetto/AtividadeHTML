@@ -1,0 +1,175 @@
+/* faz aplicação global de css*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*variaveis que podem ser usadas para todo o documento*/
+/* ativo somente no Dark Mode */
+:root {
+  --bg-url: url(../img/noite.jpg); /* cria a variavel e dento do url adiciona a imagem que desejar. */
+  --text-color: #dca0ed;
+  ---stroke-color: rgba(181, 148, 207, 0.5);
+  ---surface-color: rgba(157, 56, 159, 0.1);
+  ---surface-color-hover: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(../img/MoonStars.svg);
+  --highlight-color: rgba(255, 255, 255, 0.3);
+}
+
+.light {
+  --bg-url: url(../img/dia.webp);
+  --text-color: #3a0101;
+  ---stroke-color: rgba(59, 1, 1, 0.5);
+  ---surface-color: rgba(255, 0, 0, 0.1);
+  ---surface-color-hover: rgba(0, 0, 0, 0.2);
+  --switch-bg-url: url(../img/Sun.svg);
+  --highlight-color: rgba(69, 48, 48, 0.3);
+}
+
+body {
+  background: var(--bg-url) no-repeat top center / cover;
+  height: 100vh;
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#container {
+  width: 100%;
+  max-width: 300px;
+  margin: 56px auto 0px;
+  padding: 0px 24px;
+}
+
+#perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#perfil img {
+  width: 112px;
+  height: 112px;
+  border-radius: 100%;
+  border: 4px solid var(---stroke-color);
+  object-fit: cover;
+}
+
+#perfil p {
+  margin-top: 8px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* botao */
+#botao {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#botao button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff var(--switch-bg-url) no-repeat center;
+
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+
+  animation: slide-out 0.2s;
+}
+
+.light #botao button{
+    animation: slide-in 0.35s forwards;
+}
+
+#botao button:hover {
+  outline: 8px solid var(---surface-color-hover);
+  transition: all 0.2s;
+}
+
+#botao span {
+  background: var(---surface-color);
+  display: block;
+  width: 54px;
+  height: 24px;
+  border: 1px solid var(---stroke-color);
+  border-radius: 24px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+#links ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border: 1px solid var(---stroke-color);
+  border-radius: 8px;
+  background: var(---surface-color);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+#links ul li a:hover {
+  background: var(---surface-color-hover);
+  border: 1px solid var(---surface-color-hover);
+}
+
+#redeSocial {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  gap: 16px;
+  font-size: 24px;
+}
+
+#redeSocial a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+#footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 24px;
+}
+
+#footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* animação do botão */
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
